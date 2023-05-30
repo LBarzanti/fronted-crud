@@ -1,0 +1,69 @@
+<div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 ">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="birthDate">
+      <th mat-header-cell *matHeaderCellDef> birthDate </th>
+      <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> firstName </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> lastName </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef> gender </th>
+      <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="hireDate">
+      <th mat-header-cell *matHeaderCellDef> hireDate </th>
+      <td mat-cell *matCellDef="let element"> {{element.hireDate}} </td>
+    </ng-container>
+
+    <!--Colonna con i bottoni-->
+    <!--Cancella riga -->
+    <ng-container matColumnDef="cancella">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element">
+        <button (click)="cancella(element)">Delete</button>
+      </td>
+    </ng-container>
+
+    <!--Modifica riga-->
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button (click)="modifica(element)">Edit</button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+  </table>
+  <button mat-button color="primary" (click)="firstPage()">Prima Pagina</button>
+  <button mat-nutton color="primary" (click)="nextPage()">Prossima Pagina</button>
+  {{data?.page?.number}}
+  <button mat-button color="primary" (click)="prevPage()">Pagina Precedente</button>
+  <button mat-button color="primary" (click)="lastPage()">Ultima Pagina</button>
+</div>
